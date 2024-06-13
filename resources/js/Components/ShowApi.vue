@@ -5,7 +5,7 @@
                     <select name="" v-model="whatapi" id="">
                         <option value="">Select api</option>
                         <option value="bmw">bmw</option>
-                        <option value="cars">Auto</option>
+                        <option value="mercedes">mercedes</option>
                         <option value="lurescape">Kalad</option>
                         <option value="mannicoon">Mätlik</option>
                         <option value="song">Spotify</option>
@@ -22,19 +22,39 @@
 
 
                 <div
+                    v-if="whatapi == 'mercedes'"
+                    v-for="data in apiData"
+                    :key="data.id"
+                >
+                    <div>
+                        <div class="w-24 h-24">
+                            <img :src="data?.image" :alt="data?.image" />
+                        </div>
+                        <div>
+                            <h1>{{ data?.title }}</h1>
+                            <p>{{ data?.model }}</p>
+                            <p>{{ data?.price }}</p>
+                            <p>{{ data?.description }}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div
                     v-if="whatapi == 'bmw'"
                     v-for="data in apiData"
                     :key="data.id"
                 >
                     <div>
                         <div class="w-24 h-24">
-                            <img :src="data?.image_url" :alt="data?.name" />
+                            <img :src="data?.image" :alt="data?.image" />
                         </div>
                         <div>
                             <h1>{{ data?.title }}</h1>
-                            <p>{{ data?.description }}</p>
                             <p>{{ data?.mudel }}</p>
                             <p>{{ data?.engine }}</p>
+                            <p>{{ data?.description }}</p>
+                            
                         </div>
                     </div>
                 </div>
